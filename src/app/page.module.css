@@ -18,13 +18,6 @@
   font-family: var(--font-mono);
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .description p {
   position: relative;
   margin: 0;
@@ -34,11 +27,6 @@
   border-radius: var(--border-radius);
 }
 
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
@@ -46,7 +34,7 @@
   width: var(--max-width);
 }
 
-.card {
+.gridElement {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
@@ -54,17 +42,17 @@
   transition: background 200ms, border 200ms;
 }
 
-.card span {
+.gridElement span {
   display: inline-block;
   transition: transform 200ms;
 }
 
-.card h2 {
+.gridElement h2 {
   font-weight: 600;
   margin-bottom: 0.7rem;
 }
 
-.card p {
+.gridElement p {
   margin: 0;
   opacity: 0.6;
   font-size: 0.9rem;
@@ -110,18 +98,18 @@
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-  .card:hover {
+  .gridElement:hover {
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
   }
 
-  .card:hover span {
+  .gridElement:hover span {
     transform: translateX(4px);
   }
 }
 
 @media (prefers-reduced-motion) {
-  .card:hover span {
+  .gridElement:hover span {
     transform: none;
   }
 }
@@ -139,11 +127,11 @@
     text-align: center;
   }
 
-  .card {
+  .gridElement {
     padding: 1rem 2.5rem;
   }
 
-  .card h2 {
+  .gridElement h2 {
     margin-bottom: 0.5rem;
   }
 
@@ -158,10 +146,6 @@
 
   .description {
     font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
   }
 
   .description p,
@@ -210,15 +194,11 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*  .logo {*/
+/*    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);*/
+/*  }*/
+/*}*/
 
 @keyframes rotate {
   from {
