@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
+import CardV1Component from "@/app/components/card/card-v1/card-v1.component";
 
 export default function Home() {
 	return (
@@ -13,6 +13,7 @@ export default function Home() {
 			<div className={styles.center}>
 				<p>Hearthstone the quartet card game</p>
 			</div>
+			<CardV1Component/>
 
 			<div className={styles.grid}>
 				<Link
