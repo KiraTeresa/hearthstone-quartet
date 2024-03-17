@@ -1,0 +1,15 @@
+.headline {
+	text-align: center;
+	padding: 25px 0;
+	border-bottom: white 1px solid;
+}
+
+.mainWrapper {
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 75px;
+	flex-wrap: wrap;
+	padding: 50px 25px;
+}

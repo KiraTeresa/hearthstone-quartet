@@ -37,13 +37,13 @@ export default function Home() {
 				</Link>
 
 				<Link
-					href="/"
+					href="/cards"
 					className={styles.gridElement}
 				>
 					<h2>
-						ABC <span>-&gt;</span>
+						Cards <span>-&gt;</span>
 					</h2>
-					<p>A placeholder to a possible future implementation.</p>
+					<p>Thinking about a page to display some cards.</p>
 				</Link>
 
 				<Link
