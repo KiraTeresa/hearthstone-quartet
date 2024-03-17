@@ -15,7 +15,7 @@ const CardV1Component = () => {
 			<p className={styles.attack}>attack</p> {/* attack */}
 			<p className={styles.health}>health</p> {/* health */}
 		</div>
-	)
-}
+	);
+};
 
 export default CardV1Component;

@@ -1,15 +1,16 @@
 .headline {
-	text-align: center;
-	padding: 25px 0;
-	border-bottom: white 1px solid;
+  padding: 25px 0;
+  border-bottom: white 1px solid;
+  text-align: center;
 }
 
 .mainWrapper {
-	height: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	gap: 75px;
-	flex-wrap: wrap;
-	padding: 50px 25px;
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 25px;
+  border: red solid 1px;
+  gap: 75px;
 }
