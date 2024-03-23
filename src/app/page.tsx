@@ -1,6 +1,7 @@
 import styles from './page.module.css';
 import Link from 'next/link';
 import CardV1Component from '@/app/components/card/card-v1/card-v1.component';
+import ButtonComponent from '@/app/components/buttons/button.component';
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
                 <p>Hearthstone the quartet card game</p>
                 <img src='https://logos-world.net/wp-content/uploads/2021/02/Hearthstone-Logo.png'
                      alt='Hearthstone Logo' width="60" height="40"/>
+                <ButtonComponent/>
             </div>
             <CardV1Component/>
 
