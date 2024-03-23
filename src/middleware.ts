@@ -1,9 +1,31 @@
 import {NextRequest, NextResponse} from 'next/server';
 
 export function middleware( request: NextRequest ) {
-    const requestHeaders = new Headers( request.headers );
+    const nonce = Buffer.from( crypto.randomUUID() ).toString( 'base64' );
+    // ! unsafe-eval is not recommended, but without it the button does not function at all
+    const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'unsafe-eval'; 
+    style-src 'self' 'nonce-${nonce}';
+    img-src 'self' logos-world.net;
+    connect-src 'self' http://localhost:8080;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    block-all-mixed-content;
+    upgrade-insecure-requests;
+`;
+    // Replace newline characters and spaces
+    const cspHeaderValue = cspHeader
+        .replace( /\s{2,}/g, ' ' )
+        .trim();
 
-    requestHeaders.set( 'Content-Security-Policy', 'default-src \'self\'; img-src \'self\' logos-world.net' );
+    const requestHeaders = new Headers( request.headers );
+    requestHeaders.set( 'x-nonce', nonce );
+
+    requestHeaders.set( 'Content-Security-Policy', cspHeaderValue );
 
     const response = NextResponse.next( {
         request: {
@@ -11,7 +33,7 @@ export function middleware( request: NextRequest ) {
         }
     } );
 
-    response.headers.set( 'Content-Security-Policy', 'default-src \'self\'; img-src \'self\' logos-world.net' );
+    response.headers.set( 'Content-Security-Policy', cspHeaderValue );
 
     return response;
 }

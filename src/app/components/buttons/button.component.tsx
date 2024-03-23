@@ -7,6 +7,7 @@ const ButtonComponent = () => {
     const [message, setMessage] = useState<string | undefined>( undefined );
 
     const handleClick = async () => {
+        console.log( 'CLICKED' );
         setMessage( '-- fetching --' );
 
         try {
@@ -20,7 +21,7 @@ const ButtonComponent = () => {
 
     return (
         <>
-            <button type="button" onClick={() => handleClick()} className={styles.click}>Click Me</button>
+            <button type="button" onClick={handleClick} className={styles.click}>Click Me</button>
             <p>Status: {message ?? '-- no data --'}</p>
         </>
     );
