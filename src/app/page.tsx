@@ -12,6 +12,8 @@ export default function Home() {
 
             <div className={styles.center}>
                 <p>Hearthstone the quartet card game</p>
+                <img src='https://logos-world.net/wp-content/uploads/2021/02/Hearthstone-Logo.png'
+                     alt='Hearthstone Logo' width="60" height="40"/>
             </div>
             <CardV1Component/>
 
