@@ -6,10 +6,8 @@ import CardV1Component from '@/app/components/card/card-v1/card-v1.component';
 import ButtonComponent from '@/app/components/buttons/button.component';
 
 export default function Home() {
-    const nonce = headers().get( 'x-nonce' ) ?? undefined;
-
     return (
-        <main className={styles.main} nonce={nonce}>
+        <main className={styles.main}>
             <div className={styles.description}>
                 <p>Start Game</p>
                 <div>Hearthstone Quartet</div>

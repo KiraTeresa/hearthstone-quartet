@@ -9,7 +9,7 @@ export function middleware( request: NextRequest ) {
     const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval'; 
-    style-src 'self' 'nonce-${nonce}';
+    style-src 'self' 'unsafe-inline';
     img-src 'self';
     connect-src 'self' ${BACKEND_URL} ${FRONTEND_URL};
     font-src 'self';
@@ -20,7 +20,6 @@ export function middleware( request: NextRequest ) {
     block-all-mixed-content;
     upgrade-insecure-requests;
     report-uri ${BACKEND_URL}/csp-reports;
-    report-to csp-endpoint;
     `;
     // Replace newline characters and spaces
     const cspHeaderValue = cspHeader
@@ -30,8 +29,9 @@ export function middleware( request: NextRequest ) {
     const requestHeaders = new Headers( request.headers );
     requestHeaders.set( 'x-nonce', nonce );
 
-    requestHeaders.set( 'Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"` );
-    requestHeaders.set( 'Content-Security-Policy', cspHeaderValue );
+    // requestHeaders.set('Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"`);
+    // requestHeaders.set('Content-Security-Policy', cspHeaderValue);
+    requestHeaders.set( 'Content-Security-Policy-Report-Only', cspHeaderValue );
 
     const response = NextResponse.next( {
         request: {
@@ -39,8 +39,10 @@ export function middleware( request: NextRequest ) {
         }
     } );
 
-    response.headers.set( 'Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"` );
-    response.headers.set( 'Content-Security-Policy', cspHeaderValue );
+    response.headers.set( 'x-nonce', nonce );
+    // response.headers.set('Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"`);
+    // response.headers.set('Content-Security-Policy', cspHeaderValue);
+    response.headers.set( 'Content-Security-Policy-Report-Only', cspHeaderValue );
 
     return response;
 }
