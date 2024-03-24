@@ -7,10 +7,9 @@ export function middleware( request: NextRequest ) {
     // ! unsafe-eval is not recommended, but without it the button does not function at all
     const cspHeader = `
     default-src 'self';
-    report-uri ${BACKEND_URL}/csp-reports;
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval'; 
     style-src 'self' 'nonce-${nonce}';
-    img-src 'self' logos-world.net;
+    img-src 'self';
     connect-src 'self' ${BACKEND_URL};
     font-src 'self';
     object-src 'none';
@@ -19,7 +18,8 @@ export function middleware( request: NextRequest ) {
     frame-ancestors 'none';
     block-all-mixed-content;
     upgrade-insecure-requests;
-`;
+    report-uri ${BACKEND_URL}/csp-reports;
+    `;
     // Replace newline characters and spaces
     const cspHeaderValue = cspHeader
         .replace( /\s{2,}/g, ' ' )
@@ -28,8 +28,8 @@ export function middleware( request: NextRequest ) {
     const requestHeaders = new Headers( request.headers );
     requestHeaders.set( 'x-nonce', nonce );
 
+    // requestHeaders.set('Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"`);
     requestHeaders.set( 'Content-Security-Policy', cspHeaderValue );
-    //requestHeaders.set('Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"`)
 
     const response = NextResponse.next( {
         request: {
