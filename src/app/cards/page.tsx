@@ -10,12 +10,12 @@ const CardsPage = async () => {
         <>
             <h2 className={styles.headline}>Cards</h2>
             <div className={styles.mainWrapper}>
-                <CardV1Component/>
-                <CardV1Component/>
-                <CardV1Component/>
-                <CardV1Component/>
-                <CardV1Component/>
-                <CardV1Component/>
+                <CardV1Component />
+                <CardV1Component />
+                <CardV1Component />
+                <CardV1Component />
+                <CardV1Component />
+                <CardV1Component />
             </div>
         </>
     );

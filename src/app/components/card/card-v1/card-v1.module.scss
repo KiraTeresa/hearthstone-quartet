@@ -54,7 +54,9 @@
     top: 40%;
     display: grid;
     width: fit-content;
-    padding: 1.3em; /* you may need to adjust this based on your content */
+    padding: 1.3em;
+
+    /* you may need to adjust this based on your content */
     aspect-ratio: 1;
     color: #fff;
     font-size: 28px;
@@ -77,22 +79,20 @@
     border-radius: 999px 999px 0 0;
     border-bottom: none;
     aspect-ratio: 2;
-    clip-path: polygon(
-                    100% 0,
-                    calc(50% + 50% * cos(var(--a))) calc(100% - 100% * sin(var(--a))),
-                    calc(50% + (50% - var(--s) / 2) * cos(var(--a) + var(--r))) calc(100% - (100% - var(--s) / 2) * sin(var(--a) + var(--r))),
-                    calc(50% + (50% - var(--s)) * cos(var(--a))) calc(100% - (100% - var(--s)) * sin(var(--a))),
-                    50% 100%,
-                    calc(50% - (50% - var(--s)) * cos(var(--a))) calc(100% - (100% - var(--s)) * sin(var(--a))),
-                    calc(50% - (50% - var(--s) / 2) * cos(var(--a) + var(--r))) calc(100% - (100% - var(--s) / 2) * sin(var(--a) + var(--r))),
-                    calc(50% - 50% * cos(var(--a))) calc(100% - 100% * sin(var(--a))),
-                    0 0
-    );
+    clip-path: polygon(100% 0,
+        calc(50% + 50% * cos(var(--a))) calc(100% - 100% * sin(var(--a))),
+        calc(50% + (50% - var(--s) / 2) * cos(var(--a) + var(--r))) calc(100% - (100% - var(--s) / 2) * sin(var(--a) + var(--r))),
+        calc(50% + (50% - var(--s)) * cos(var(--a))) calc(100% - (100% - var(--s)) * sin(var(--a))),
+        50% 100%,
+        calc(50% - (50% - var(--s)) * cos(var(--a))) calc(100% - (100% - var(--s)) * sin(var(--a))),
+        calc(50% - (50% - var(--s) / 2) * cos(var(--a) + var(--r))) calc(100% - (100% - var(--s) / 2) * sin(var(--a) + var(--r))),
+        calc(50% - 50% * cos(var(--a))) calc(100% - 100% * sin(var(--a))),
+        0 0);
     content: "";
-    inset: calc(50% - var(--s)/2) -150% auto; /* you can also adjust the 150% to control the shape */
+    inset: calc(50% - var(--s) / 2) -150% auto;
   }
 
-   /**
+  /**
   ############################################
   status elements
   ############################################
@@ -179,4 +179,3 @@
     }
   }
 }
-
