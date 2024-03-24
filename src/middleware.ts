@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEN_URL || 'http://localhost:8080';
+const FRONTEND_URL = process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000';
 
 export function middleware( request: NextRequest ) {
     const nonce = Buffer.from( crypto.randomUUID() ).toString( 'base64' );
@@ -10,7 +11,7 @@ export function middleware( request: NextRequest ) {
     script-src 'self' 'nonce-${nonce}' 'unsafe-eval'; 
     style-src 'self' 'nonce-${nonce}';
     img-src 'self';
-    connect-src 'self' ${BACKEND_URL};
+    connect-src 'self' ${BACKEND_URL} ${FRONTEND_URL};
     font-src 'self';
     object-src 'none';
     base-uri 'self';
