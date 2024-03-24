@@ -19,6 +19,7 @@ export function middleware( request: NextRequest ) {
     block-all-mixed-content;
     upgrade-insecure-requests;
     report-uri ${BACKEND_URL}/csp-reports;
+    report-to csp-endpoint;
     `;
     // Replace newline characters and spaces
     const cspHeaderValue = cspHeader
@@ -28,7 +29,7 @@ export function middleware( request: NextRequest ) {
     const requestHeaders = new Headers( request.headers );
     requestHeaders.set( 'x-nonce', nonce );
 
-    // requestHeaders.set('Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"`);
+    requestHeaders.set( 'Reporting-Endpoints', `csp-endpoint="${BACKEND_URL}/cps-reports"` );
     requestHeaders.set( 'Content-Security-Policy', cspHeaderValue );
 
     const response = NextResponse.next( {
