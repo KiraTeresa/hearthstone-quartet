@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx fix-lint && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "npx eslint src --ext ts && npx stylelint **/*.scss",
     "fix-lint": "npx eslint . --ext .ts,.tsx --fix && npx stylelint \"**/*.{css,scss}\" --fix"
