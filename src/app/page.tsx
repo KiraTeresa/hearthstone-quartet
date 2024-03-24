@@ -1,11 +1,15 @@
 import styles from './page.module.css';
 import Link from 'next/link';
+import { headers } from 'next/headers';
+
 import CardV1Component from '@/app/components/card/card-v1/card-v1.component';
 import ButtonComponent from '@/app/components/buttons/button.component';
 
 export default function Home() {
+    const nonce = headers().get( 'x-nonce' ) ?? undefined;
+
     return (
-        <main className={styles.main}>
+        <main className={styles.main} nonce={nonce}>
             <div className={styles.description}>
                 <p>Start Game</p>
                 <div>Hearthstone Quartet</div>
@@ -14,10 +18,10 @@ export default function Home() {
             <div className={styles.center}>
                 <p>Hearthstone the quartet card game</p>
                 <img src='https://logos-world.net/wp-content/uploads/2021/02/Hearthstone-Logo.png'
-                     alt='Hearthstone Logo' width="60" height="40"/>
-                <ButtonComponent/>
+                    alt='Hearthstone Logo' width="60" height="40" />
+                <ButtonComponent />
             </div>
-            <CardV1Component/>
+            <CardV1Component />
 
             <div className={styles.grid}>
                 <Link
